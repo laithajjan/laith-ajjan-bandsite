@@ -1,0 +1,511 @@
+// Importing the partials
+
+@use './partials/colours';
+@use './partials/mixins';
+@use './partials/borders';
+
+
+
+//Initalizing the fonts
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf),
+        url("../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf),
+        url("../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf),
+        url("../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+*,
+* ::before,
+* ::after {
+    box-sizing: border-box;
+}
+
+
+// Styling the body
+.body {
+    font-family: "Avenir Next";
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+
+// Styling the header using the imported partials
+.header {
+    background-color: colours.$bandsite-black;
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.desktop {
+        padding: 0 5rem;
+    }
+
+    @include mixins.tablet {
+        flex-direction: row;
+    }
+
+    &__name {
+        margin: 0;
+    }
+
+    &__button {
+        text-decoration: none;
+        color: colours.$white;
+        @include mixins.logo;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            margin: 1.5rem 4rem 1rem 2.25rem;
+        }
+
+        @include mixins.desktop {
+            margin-top: 2rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        @include mixins.tablet {
+            height: 100%;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: colours.$mercury;
+
+        &--active {
+            color: colours.$white;
+        }
+
+        &:hover {
+            color: colours.$white;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+        text-align: center;
+        width: 50%;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+        position: relative;
+
+
+        @include mixins.tablet {
+            padding-top: 1.75rem;
+            margin-right: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @include mixins.desktop {
+            padding-top: 2.25rem;
+            padding-bottom: 2rem;
+            margin-right: 2rem;
+        }
+
+        &--active {
+            font-weight: 600;
+            border-bottom: borders.$underline;
+        }
+
+        &--inactive {
+            &::after {
+                content: "";
+                position: absolute;
+                width: 0%;
+                height: 3.5px;
+                display: block;
+                transition: all 0.5s ease;
+                bottom: 0;
+            }
+
+            &:hover::after {
+                width: 100%;
+                height: 3.5px;
+                background-color: colours.$white;
+            }
+        }
+    }
+}
+
+// Styling the hero section
+.hero {
+    display: flex;
+    align-items: center;
+    background-image: url('../assets/images/hero-bio.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 35vh;
+    margin: 0;
+    position: relative;
+
+    @include mixins.tablet {
+        height: 75vh;
+    }
+
+    @include mixins.desktop {
+        height: 100vh;
+    }
+
+    &__header {
+        color: colours.$white;
+        @include mixins.mobile-heading;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 2;
+
+        @include mixins.tablet {
+            font-size: 3.75rem;
+            line-height: 4.25rem;
+            font-weight: 600;
+            padding: 0 2.25rem;
+        }
+
+        @include mixins.desktop {
+            margin-left: 5rem;
+        }
+    }
+
+    &__overlay {
+        background-color: colours.$bandsite-black;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+// Styling the about section
+.info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+
+    @include mixins.tablet {
+        margin: 0 3rem;
+    }
+
+    @include mixins.desktop {
+        margin: 0 8rem;
+    }
+
+    &__heading {
+        @include mixins.mobile-heading;
+        @include mixins.mobile-margin;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            @include mixins.tablet-margin;
+        }
+
+        @include mixins.desktop {
+            @include mixins.desktop-margin;
+        }
+    }
+
+    &__image {
+        @include mixins.tablet {
+            padding: 0 3rem;
+        }
+
+        @include mixins.desktop {
+            padding: 0 5.5rem;
+        }
+    }
+
+    &__quote {
+        font-size: 0.9rem;
+        line-height: 1.5rem;
+
+        @include mixins.tablet {
+            font-size: 1rem;
+            padding: 0 3rem;
+            margin-top: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            padding: 0 5.5rem;
+        }
+
+        &--text {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+
+            @include mixins.tablet {
+                font-size: 1.35rem;
+                line-height: 2rem;
+            }
+
+            @include mixins.desktop {
+                width: 80%;
+            }
+        }
+
+        &--source {
+            font-weight: 400;
+            margin-top: 0;
+        }
+    }
+}
+
+// Styling the article section
+.article {
+    margin: 0 1rem;
+
+    @include mixins.tablet {
+        margin: 0 3rem;
+        padding: 0 3rem;
+    }
+
+    @include mixins.desktop {
+        margin: 0 8rem;
+        padding: 0 5.5rem;
+    }
+
+    &__heading {
+        font-weight: 600;
+        font-size: 0.9rem;
+        line-height: 1.5rem;
+        margin: 0.5rem 0;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            margin-top: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__container {
+        @include mixins.tablet {
+            display: flex;
+        }
+    }
+
+    &__text {
+        font-size: 1rem;
+        line-height: 2rem;
+        margin: 1rem 0;
+
+        &--left {
+            @include mixins.tablet {
+                padding-right: 1.5rem;
+                margin: 0 0 2.25rem 0;
+            }
+        }
+
+        &--right {
+            @include mixins.tablet {
+                padding-left: 1.5rem;
+                margin: 0 0 2.25rem 0;
+            }
+        }
+    }
+}
+
+// Styling the gallery section
+.gallery {
+    display: flex;
+    flex-direction: column;
+    background-color: colours.$alabaster;
+    padding: 0 1rem;
+
+    @include mixins.tablet {
+        padding: 0 2.25rem;
+    }
+
+    @include mixins.desktop {
+        padding: 0 8rem;
+    }
+
+    &__header {
+        @include mixins.mobile-heading;
+        @include mixins.mobile-margin;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            @include mixins.tablet-margin;
+        }
+
+        @include mixins.desktop {
+            @include mixins.desktop-margin;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-evenly;
+        }
+    }
+
+    &__image {
+        margin-bottom: 1rem;
+        filter: opacity(30%);
+
+        &:hover {
+            filter: none;
+        }
+
+        @include mixins.tablet {
+            max-width: 31%;
+            margin-bottom: 3vw;
+        }
+
+        @include mixins.desktop {
+            max-width: 31.75%;
+            margin-bottom: 1.7vw;
+        }
+    }
+}
+
+// Styling the footer section
+.footer {
+    padding: 1.5rem 1rem 1rem 1rem;
+    background-color: colours.$bandsite-black;
+    color: colours.$white;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+
+    @include mixins.tablet {
+        font-size: 0.9rem;
+        margin-top: 1.125rem;
+        padding: 1.5rem 2.25rem 2.25rem 2.25rem;
+        position: relative;
+    }
+
+    @include mixins.desktop {
+        padding: 1.5rem 8rem 2.25rem 8rem;
+    }
+
+    &__container {
+        @include mixins.tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__header {
+        @include mixins.mobile-heading;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            margin-top: 1.5rem;
+            margin-right: 2.5rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__icons {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1.2rem;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin-bottom: -0.5rem;
+            margin-right: 1.8rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__body {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @include mixins.desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__section {
+        margin-bottom: 2rem;
+
+        @include mixins.desktop {
+            margin-right: 4rem;
+        }
+    }
+
+    &__section-header {
+        font-weight: 600;
+    }
+
+    &__mail-link {
+        text-decoration: none;
+        color: colours.$white;
+    }
+
+    &__logo {
+        @include mixins.logo;
+        margin: 4rem 0 1rem 0;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            position: absolute;
+            top: 3rem;
+            right: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            right: 8rem;
+        }
+    }
+
+    &__copyright {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+        }
+    }
+}

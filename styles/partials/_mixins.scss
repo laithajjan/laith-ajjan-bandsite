@@ -1,0 +1,51 @@
+@use './screens';
+
+// Desktop Mixin
+@mixin desktop-margin {
+    margin-top: 3rem;
+    margin-bottom: 2.25rem;
+}
+
+@mixin desktop {
+    @media (min-width: screens.$desktop-breakpoint) {
+        @content;
+    }
+}
+
+// Tablet Mixin
+@mixin tablet {
+    @media (min-width: screens.$tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin tablet-heading {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 600;
+}
+
+@mixin tablet-margin {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+// Mobile Mixin
+@mixin mobile-heading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+@mixin mobile-margin {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+// Logo Mixin
+@mixin logo {
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
