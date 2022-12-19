@@ -19,6 +19,113 @@
     font-weight: 700;
 }
 
+// Styling the header section
+.header {
+    background-color: colours.$bandsite-black;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+
+    @include mixins.tablet {
+        padding: 0 2.25rem;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    @include mixins.desktop {
+        padding: 0 8rem;
+    }
+
+    &__text {
+        margin: 0;
+    }
+
+    &__button {
+        width: 7.5rem;
+        height: 1.25rem;
+        display: flex;
+        margin: 1rem auto;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin: 1.5rem 4rem 1.5rem 0;
+        }
+
+        @include mixins.desktop {
+            margin-top: 2rem;
+        }
+
+        &:hover {
+            transform: variables.$scale;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        @include mixins.tablet {
+            height: 100%;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: colours.$mercury;
+
+        &--active {
+            color: colours.$white;
+        }
+
+        &:hover {
+            color: colours.$white;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+        text-align: center;
+        width: 50%;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+        position: relative;
+
+
+        @include mixins.tablet {
+            padding-top: 1.75rem;
+            margin-right: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @include mixins.desktop {
+            padding-top: 2.25rem;
+            padding-bottom: 2rem;
+            margin-right: 2rem;
+        }
+
+        &--active {
+            font-weight: 500;
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 1rem;
+        }
+
+        &--inactive a {
+            color: colours.$mercury;
+        }
+
+        &:hover,
+        &:active {
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 2rem;
+            text-decoration: none;
+        }
+    }
+}
+
 // Styling the footer section
 .footer {
     padding: 1.5rem 1rem 1rem 1rem;
@@ -130,114 +237,6 @@
 
         @include mixins.tablet {
             font-size: 0.9rem;
-        }
-    }
-}
-
-// Styling the header section
-.header {
-    background-color: colours.$bandsite-black;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 3;
-
-    @include mixins.tablet {
-        padding: 0 2.25rem;
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
-    @include mixins.desktop {
-        padding: 0 8rem;
-    }
-
-    &__text {
-        margin: 0;
-    }
-
-    &__button {
-        width: 7.5rem;
-        height: 1.25rem;
-        display: flex;
-        margin: 1rem auto;
-        transition: transform 0.3s;
-
-        @include mixins.tablet {
-            margin: 1.5rem 4rem 1.5rem 0;
-        }
-
-        @include mixins.desktop {
-            margin-top: 2rem;
-        }
-
-        &:hover {
-            transform: variables.$scale;
-        }
-    }
-
-    &__list {
-        margin: 0;
-        padding: 0;
-        display: flex;
-
-        @include mixins.tablet {
-            height: 100%;
-        }
-    }
-
-    &__link {
-        text-decoration: none;
-        color: colours.$mercury;
-
-        &--active {
-            color: colours.$white;
-        }
-
-        &:hover {
-            color: colours.$white;
-        }
-    }
-
-    &__item {
-        list-style-type: none;
-        text-align: center;
-        width: 50%;
-        padding-bottom: 0.5rem;
-        font-size: 0.8rem;
-        position: relative;
-
-
-        @include mixins.tablet {
-            padding-top: 1.75rem;
-            margin-right: 4rem;
-            font-size: 0.9rem;
-        }
-
-        @include mixins.desktop {
-            padding-top: 2.25rem;
-            padding-bottom: 2rem;
-            margin-right: 2rem;
-        }
-
-        &--active {
-            font-weight: 500;
-            border-bottom: 3px solid colours.$white;
-            padding-bottom: 1rem;
-            text-decoration: none;
-        }
-
-        &--inactive a {
-            color: colours.$mercury;
-        }
-
-        &:hover,
-        &:active {
-            border-bottom: 3px solid colours.$white;
-            padding-bottom: 2rem;
-            text-decoration: none;
         }
     }
 }
