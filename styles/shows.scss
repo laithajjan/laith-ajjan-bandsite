@@ -15,12 +15,12 @@
     background-image: url('../assets/images/hero-shows.jpg');
     background-position: center;
     background-size: cover;
-    height: 60vh;
+    height: 45vh;
     margin-top: 4.5rem;
     position: relative;
 
     @include mixins.tablet {
-        height: 100vh;
+        height: 80vh;
         margin-top: 4rem;
     }
 
