@@ -20,12 +20,12 @@
     position: relative;
 
     @include mixins.tablet {
-        height: 80vh;
+        height: 100vh;
         margin-top: 4rem;
     }
 
     @include mixins.desktop {
-        height: 80vh;
+        height: 100vh;
         margin-top: 5rem;
     }
 
