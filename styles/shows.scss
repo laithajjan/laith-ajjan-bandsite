@@ -1,0 +1,496 @@
+@use './partials/colours';
+@use './partials/mixins';
+@use './partials/screens';
+@use './partials/borders';
+@use './partials/global';
+@use './partials/variables';
+
+// Styling the footer section
+.footer {
+    padding: 1.5rem 1rem 1rem 1rem;
+    background-color: colours.$bandsite-black;
+    color: colours.$white;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+
+    @include mixins.tablet {
+        font-size: 0.9rem;
+        margin-top: 1.125rem;
+        padding: 1.5rem 2.25rem 2.25rem 2.25rem;
+        position: relative;
+    }
+
+    @include mixins.desktop {
+        padding: 1.5rem 8rem 2.25rem 8rem;
+    }
+
+    &__container {
+        @include mixins.tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__header {
+        @include mixins.mobile-heading;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            margin-top: 1.5rem;
+            margin-right: 2.5rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__icons {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1.2rem;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin-bottom: -0.5rem;
+            margin-right: 1.8rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__body {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @include mixins.desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__section {
+        margin-bottom: 2rem;
+
+        @include mixins.desktop {
+            margin-right: 4rem;
+        }
+    }
+
+    &__section-header {
+        font-weight: 600;
+    }
+
+    &__mail-link {
+        text-decoration: none;
+        color: colours.$white;
+    }
+
+    &__logo {
+        @include mixins.logo;
+        margin: 4rem 0 1rem 0;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            position: absolute;
+            top: 3rem;
+            right: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            right: 8rem;
+        }
+    }
+
+    &__copyright {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+// Styling the header section
+.header {
+    background-color: colours.$bandsite-black;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+
+    @include mixins.tablet {
+        padding: 0 2.25rem;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    @include mixins.desktop {
+        padding: 0 8rem;
+    }
+
+    &__text {
+        margin: 0;
+    }
+
+    &__button {
+        width: 7.5rem;
+        height: 1.25rem;
+        display: flex;
+        margin: 1rem auto;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin: 1.5rem 4rem 1.5rem 0;
+        }
+
+        @include mixins.desktop {
+            margin-top: 2rem;
+        }
+
+        &:hover {
+            transform: variables.$scale;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        @include mixins.tablet {
+            height: 100%;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: colours.$mercury;
+
+        &--active {
+            color: colours.$white;
+        }
+
+        &:hover {
+            color: colours.$white;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+        text-align: center;
+        width: 50%;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+        position: relative;
+
+
+        @include mixins.tablet {
+            padding-top: 1.75rem;
+            margin-right: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @include mixins.desktop {
+            padding-top: 2.25rem;
+            padding-bottom: 2rem;
+            margin-right: 2rem;
+        }
+
+        &--active {
+            font-weight: 500;
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        &--inactive a {
+            color: colours.$mercury;
+        }
+
+        &:hover,
+        &:active {
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 2rem;
+            text-decoration: none;
+        }
+    }
+}
+
+// Styling the hero section
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-image: url('../assets/images/hero-shows.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 45vh;
+    margin-top: 4.5rem;
+    position: relative;
+
+    @include mixins.tablet {
+        height: 80vh;
+        margin-top: 4rem;
+    }
+
+    @include mixins.desktop {
+        height: 80vh;
+        margin-top: 5rem;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__small-text {
+        margin: 0;
+        padding: 0 1rem;
+        color: colours.$white;
+        font-size: 0.8rem;
+        font-weight: 500;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            padding: 0 2.25rem;
+        }
+
+        @include mixins.desktop {
+            padding: 0 8rem;
+        }
+    }
+
+    &__text-audio {
+        @include mixins.desktop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 8rem;
+        }
+    }
+
+    &__text {
+        color: colours.$white;
+        @include mixins.mobile-heading;
+        padding: 0 1rem;
+        margin: 1rem 0;
+        width: 80%;
+
+        @include mixins.tablet {
+            font-size: 3.75rem;
+            line-height: 4.25rem;
+            font-weight: 600;
+            padding: 0 2.25rem;
+            font-weight: 500;
+        }
+
+        @include mixins.desktop {
+            margin-left: 5.75rem;
+            width: 50%;
+            max-width: 35rem;
+            font-weight: 500;
+        }
+    }
+
+    &__overlay {
+        background-color: colours.$bandsite-black;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+    }
+
+    &__audio {
+        width: 100%;
+        height: 6rem;
+        padding: 0 1rem;
+
+        @include mixins.tablet {
+            width: 60%;
+            height: 10rem;
+            padding: 1.5rem 0 0 2.25rem;
+        }
+
+        @include mixins.desktop {
+            width: 40%;
+            max-width: 29rem;
+        }
+    }
+}
+
+// Styling the hero section
+.shows {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    @include mixins.tablet {
+        margin-bottom: 2.5rem;
+    }
+
+    @include mixins.desktop {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 5.5rem 0 8rem;
+        margin-top: 3rem;
+    }
+
+    &__heading {
+        @include mixins.mobile-heading;
+        @include mixins.mobile-margin;
+        padding: 0 1rem;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            @include mixins.tablet-margin;
+            font-weight: 500;
+            padding: 0 2.25rem;
+        }
+
+        @include mixins.desktop {
+            font-weight: 500;
+            padding: 0;
+            margin: 0;
+        }
+
+    }
+
+    &__body {
+        max-width: screens.$tablet-breakpoint;
+
+        @include mixins.desktop {
+            max-width: screens.$desktop-breakpoint;
+        }
+    }
+
+    &__container {
+        list-style-type: none;
+        font-size: 0.8rem;
+        font-weight: 400;
+        padding: 0 1rem;
+        margin: 0;
+        border-bottom: 1px solid colours.$mercury;
+
+        @include mixins.tablet {
+            display: flex;
+            align-items: flex-end;
+            margin: 0 1rem;
+            padding: 0.5rem 1.25rem 1rem 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        &:hover {
+            background-color: colours.$alabaster;
+        }
+
+    }
+
+    &__detail {
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: colours.$silver;
+        padding: 0.5rem 0;
+
+
+        @include mixins.tablet {
+            display: none;
+        }
+
+        &--top {
+            display: none;
+
+            @include mixins.tablet {
+                list-style-type: none;
+                display: flex;
+                font-size: 0.8rem;
+                margin: 0;
+                padding: 1rem 2.25rem 0.5rem 2.25rem;
+            }
+        }
+    }
+
+    &__detail-header {
+        width: 11.5rem;
+
+        &--date {
+            @include mixins.desktop {
+                width: 16.5rem;
+            }
+        }
+    }
+
+    &__date {
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+
+        @include mixins.tablet {
+            padding-bottom: 0.75rem;
+            width: 11.5rem;
+        }
+
+        @include mixins.desktop {
+            width: 16.5rem;
+        }
+    }
+
+    &__venue {
+        font-weight: 400;
+        padding-bottom: 0.5rem;
+
+        @include mixins.tablet {
+            padding-bottom: 0.75rem;
+            width: 11.5rem;
+        }
+    }
+
+    &__location {
+        font-weight: 400;
+        padding-bottom: 0.5rem;
+
+        @include mixins.tablet {
+            padding-bottom: 0.75rem;
+            width: 11rem;
+        }
+    }
+
+    &__button {
+        font-weight: 400;
+        @include mixins.button;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+
+        @include mixins.tablet {
+            width: 9.5rem;
+            margin-bottom: 0rem;
+            align-self: flex-end;
+        }
+
+        &:hover {
+            background: colours.$bandsite-darkblack;
+        }
+    }
+
+    &__table {
+        @include mixins.tablet {
+            width: 100%;
+        }
+    }
+}

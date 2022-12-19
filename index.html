@@ -12,18 +12,19 @@
 </head>
 
 <body class="body">
-    <!-- Creating the header -->
+    <!-- Header Section -->
     <header class="header">
-        <h2 class="header__name">
-            <a href="./index.html" class="header__button">
-                BandSite
+        <h2 class="header__text">
+            <a href="../index.html" class="header__button">
+                <img src="./assets/logos/Logo-bandsite.svg" alt="Band Logo">
             </a>
         </h2>
         <nav class="header__nav">
             <ul class="header__list">
-                <li class="header__item header__item--active"><a href="#"
-                        class="header__link header__link--active">Biography</a></li>
-                <li class="header__item header__item--inactive"><a href="#" class="header__link">Shows</a></li>
+                <li class="header__item header__item--inactive"><a href="./index.html"
+                        class="header__link">Biography</a></li>
+                <li class="header__item header__item--active"><a href="./pages/shows.html"
+                        class="header__link header__link--active">Shows</a></li>
             </ul>
         </nav>
     </header>
@@ -109,6 +110,31 @@
                     class="gallery__image">
             </div>
         </section>
+        <!-- Comment Section -->
+        <section class="comment">
+            <h2 class="comment__heading">
+                Join the Conversation
+            </h2>
+            <article class="comment__body">
+                <div class="comment__new">
+                    <img src="./assets/images/Mohan-muruge.jpg" alt="profile picture" class="comment__avatar">
+                    <form class="comment__form">
+                        <label for="user-name" class="comment__label">Name</label>
+                        <input type="text" placeholder="Enter your name" id="user-name" class="comment__input-name"
+                            name="name">
+
+                        <label for="user-comment" class="comment__label">Comment</label>
+                        <input type="text" placeholder="Add a new comment" id="user-comment"
+                            class="comment__input-conversation" name="comment">
+
+                        <button type="submit" class="comment__button">Comment</button>
+                        <p class="comment__validation"></p>
+                    </form>
+                </div>
+                <div class="comment__section">
+                </div>
+            </article>
+        </section>
     </main>
     <!-- Footer Section -->
     <footer class="footer">
@@ -177,6 +203,7 @@
             Copyright The Bees Knees © 2021 All Rights Reserved
         </p>
     </footer>
+    <script src="./scripts/index-page.js"></script>
 </body>
 
 </html>

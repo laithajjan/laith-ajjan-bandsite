@@ -3,36 +3,8 @@
 @use './partials/colours';
 @use './partials/mixins';
 @use './partials/borders';
-
-
-
-//Initalizing the fonts
-@font-face {
-    font-family: "Avenir Next";
-    src: url(../assets/fonts/AvenirNextLTPro-Regular.otf),
-        url("../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Avenir Next";
-    src: url(../assets/fonts/AvenirNextLTPro-Demi.otf),
-        url("../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: "Avenir Next";
-    src: url(../assets/fonts/AvenirNextLTPro-Bold.otf),
-        url("../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
-    font-weight: 700;
-}
-
-*,
-* ::before,
-* ::after {
-    box-sizing: border-box;
-}
+@use './partials/variables';
+@use './partials/global';
 
 
 // Styling the body
@@ -49,32 +21,34 @@
     background-color: colours.$bandsite-black;
     display: flex;
     flex-direction: column;
-
-    @include mixins.desktop {
-        padding: 0 5rem;
-    }
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
 
     @include mixins.tablet {
+        padding: 0 2.25rem;
         flex-direction: row;
+        justify-content: flex-start;
     }
 
-    &__name {
+    @include mixins.desktop {
+        padding: 0 8rem;
+    }
+
+    &__text {
         margin: 0;
     }
 
     &__button {
-        text-decoration: none;
-        color: colours.$white;
-        @include mixins.logo;
+        width: 7.5rem;
+        height: 1.25rem;
         display: flex;
-        justify-content: center;
-        margin-bottom: 0.5rem;
-        margin-top: 1rem;
+        margin: 1rem auto;
         transition: transform 0.3s;
 
         @include mixins.tablet {
-            font-size: 1.5rem;
-            margin: 1.5rem 4rem 1rem 2.25rem;
+            margin: 1.5rem 4rem 1.5rem 0;
         }
 
         @include mixins.desktop {
@@ -82,7 +56,7 @@
         }
 
         &:hover {
-            transform: scale(1.2);
+            transform: variables.$scale;
         }
     }
 
@@ -102,6 +76,7 @@
 
         &--active {
             color: colours.$white;
+            text-decoration: none;
         }
 
         &:hover {
@@ -131,29 +106,138 @@
         }
 
         &--active {
-            font-weight: 600;
-            border-bottom: borders.$underline;
+            font-weight: 500;
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 1rem;
         }
 
-        &--inactive {
-            &::after {
-                content: "";
-                position: absolute;
-                width: 0%;
-                height: 3.5px;
-                display: block;
-                transition: all 0.5s ease;
-                bottom: 0;
-            }
+        &--inactive a {
+            color: colours.$mercury;
+        }
 
-            &:hover::after {
-                width: 100%;
-                height: 3.5px;
-                background-color: colours.$white;
-            }
+        &:hover,
+        &:active {
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 2rem;
         }
     }
 }
+
+// Styling the footer section
+.footer {
+    padding: 1.5rem 1rem 1rem 1rem;
+    background-color: colours.$bandsite-black;
+    color: colours.$white;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+
+    @include mixins.tablet {
+        font-size: 0.9rem;
+        margin-top: 1.125rem;
+        padding: 1.5rem 2.25rem 2.25rem 2.25rem;
+        position: relative;
+    }
+
+    @include mixins.desktop {
+        padding: 1.5rem 8rem 2.25rem 8rem;
+    }
+
+    &__container {
+        @include mixins.tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__header {
+        @include mixins.mobile-heading;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            margin-top: 1.5rem;
+            margin-right: 2.5rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__icons {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1.2rem;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin-bottom: -0.5rem;
+            margin-right: 1.8rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__body {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @include mixins.desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__section {
+        margin-bottom: 2rem;
+
+        @include mixins.desktop {
+            margin-right: 4rem;
+        }
+    }
+
+    &__section-header {
+        font-weight: 600;
+    }
+
+    &__mail-link {
+        text-decoration: none;
+        color: colours.$white;
+    }
+
+    &__logo {
+        @include mixins.logo;
+        margin: 4rem 0 1rem 0;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            position: absolute;
+            top: 3rem;
+            right: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            right: 8rem;
+        }
+    }
+
+    &__copyright {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+        }
+    }
+}
+
 
 // Styling the hero section
 .hero {
@@ -395,117 +479,184 @@
     }
 }
 
-// Styling the footer section
-.footer {
-    padding: 1.5rem 1rem 1rem 1rem;
-    background-color: colours.$bandsite-black;
-    color: colours.$white;
-    font-size: 0.8rem;
-    line-height: 1.25rem;
+// Styling the comment section
+.comment {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
 
     @include mixins.tablet {
-        font-size: 0.9rem;
-        margin-top: 1.125rem;
-        padding: 1.5rem 2.25rem 2.25rem 2.25rem;
-        position: relative;
+        padding: 0 2.25rem;
+        margin-bottom: 2.25rem;
     }
 
     @include mixins.desktop {
-        padding: 1.5rem 8rem 2.25rem 8rem;
+        padding: 0 8rem;
     }
 
-    &__container {
-        @include mixins.tablet {
-            display: flex;
-            align-items: center;
-        }
-    }
-
-    &__header {
+    &__heading {
         @include mixins.mobile-heading;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-weight: 700;
+        @include mixins.mobile-margin;
 
         @include mixins.tablet {
             @include mixins.tablet-heading;
-            margin-top: 1.5rem;
-            margin-right: 2.5rem;
+            @include mixins.tablet-margin;
+            font-weight: 500;
         }
 
         @include mixins.desktop {
-            margin-right: 3.5rem;
-            margin-bottom: 1.25rem;
-        }
-    }
-
-    &__icons {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 1.2rem;
-        transition: transform 0.3s;
-
-        @include mixins.tablet {
-            margin-bottom: -0.5rem;
-            margin-right: 1.8rem;
-        }
-
-        &:hover {
-            transform: scale(1.2);
+            @include mixins.desktop-margin;
+            font-weight: 500;
         }
     }
 
     &__body {
         @include mixins.tablet {
-            display: flex;
-            justify-content: space-between;
+            padding: 0 3.75rem
         }
 
         @include mixins.desktop {
-            justify-content: flex-start;
+            max-width: 60%;
+            margin: 0 auto;
         }
     }
 
-    &__section {
-        margin-bottom: 2rem;
-
-        @include mixins.desktop {
-            margin-right: 4rem;
-        }
+    &__new {
+        display: flex;
+        border-bottom: 1px solid colours.$mercury;
     }
 
-    &__section-header {
-        font-weight: 600;
-    }
-
-    &__mail-link {
-        text-decoration: none;
-        color: colours.$white;
-    }
-
-    &__logo {
-        @include mixins.logo;
-        margin: 4rem 0 1rem 0;
+    &__avatar {
+        width: 2.25rem;
+        height: 2.25rem;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 1rem;
+        margin-top: 1.25rem;
 
         @include mixins.tablet {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            position: absolute;
-            top: 3rem;
-            right: 2.25rem;
+            width: 3rem;
+            height: 3rem;
         }
 
-        @include mixins.desktop {
-            right: 8rem;
+        &-missing {
+            width: 2.75rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: colours.$mercury;
+
+            @include mixins.tablet {
+                width: 3.25rem;
+                height: 3rem;
+            }
+        }
+
+        &--new {
+            margin-top: 0;
         }
     }
 
-    &__copyright {
-        font-size: 0.7rem;
-        margin-bottom: 0;
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__label {
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: colours.$silver;
+        padding: 0.25rem 0;
+
+        @include mixins.tablet {
+            font-size: 0.8rem;
+        }
+    }
+
+    &__input-name {
+        padding: 0.625rem;
+        margin-bottom: 1rem;
+        font-weight: 400;
+        @include mixins.input;
+
+        @include mixins.tablet {
+            padding: 1rem;
+        }
+
+        &:focus {
+            border: 1px solid colours.$bandsite-black;
+        }
+    }
+
+    &__input-conversation {
+        padding: 0.625rem 0.625rem 4rem 0.625rem;
+        margin-bottom: 0.5rem;
+        @include mixins.input;
+
+        @include mixins.tablet {
+            padding: 1rem 1rem 4rem 1rem;
+        }
+
+        &:focus {
+            border: 1px solid colours.$bandsite-black;
+        }
+    }
+
+    &__input-error {
+        border: 1px solid colours.$error;
+    }
+
+    &__button {
+        border: none;
+        @include mixins.button;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+
+        @include mixins.tablet {
+            width: 10rem;
+            margin-left: auto;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        &:hover {
+            background: colours.$bandsite-darkblack;
+        }
+    }
+
+    &__validation {
+        font-size: 0.9rem;
+        color: colours.$error;
+    }
+
+    &__old {
+        display: flex;
+        align-items: flex-start;
+        font-size: 0.8rem;
+        padding-top: 1rem;
+        border-bottom: 1px solid colours.$mercury;
 
         @include mixins.tablet {
             font-size: 0.9rem;
+            padding: 1.5rem 0 0.5rem 0;
         }
+    }
+
+    &__old-container {
+        width: 100%;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__writer {
+        font-weight: 500;
+    }
+
+    &__date {
+        color: colours.$silver;
     }
 }
