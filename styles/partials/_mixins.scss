@@ -1,5 +1,6 @@
 @use './screens';
 @use './colours';
+@use './variables';
 
 // Desktop Mixin
 @mixin desktop-margin {
@@ -80,4 +81,20 @@
     text-transform: uppercase;
     background-color: colours.$bandsite-black;
     padding: 0.5rem 0;
+}
+
+@mixin comment-button {
+    border: none;
+    border-radius: 4px;
+    color: colours.$white;
+    background-color: colours.$bandsite-black;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    width: 5rem;
+    transition: transform 0.3s;
+}
+
+@mixin button-hover {
+    background: colours.$bandsite-darkblack;
+    transform: variables.$scale;
 }

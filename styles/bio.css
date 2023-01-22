@@ -1,29 +1,37 @@
 @font-face {
   font-family: "Avenir Next";
-  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf), url("../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
+  src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf), url("../../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
   font-weight: 400;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url(../assets/fonts/AvenirNextLTPro-Demi.otf), url("../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
+  src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf), url("../../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
   font-weight: 500;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf), url("../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
+  src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf), url("../../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf), url("../../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf), url("../../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf), url("../../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
   font-weight: 700;
 }
 *,
 * ::before,
 * ::after {
   box-sizing: border-box;
-}
-
-.body {
-  font-family: "Avenir Next";
-  font-weight: 400;
-  font-style: normal;
-  margin: 0;
 }
 
 .body {
@@ -93,7 +101,6 @@
 }
 .header__link--active {
   color: #FFFFFF;
-  text-decoration: none;
 }
 .header__link:hover {
   color: #FFFFFF;
@@ -131,6 +138,7 @@
 .header__item:hover, .header__item:active {
   border-bottom: 3px solid #FFFFFF;
   padding-bottom: 2rem;
+  text-decoration: none;
 }
 
 .footer {
@@ -251,6 +259,13 @@
   .footer__copyright {
     font-size: 0.9rem;
   }
+}
+
+.body {
+  font-family: "Avenir Next";
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
 }
 
 .hero {
@@ -710,4 +725,35 @@
 }
 .comment__date {
   color: #AFAFAF;
+}
+.comment__buttons {
+  padding-bottom: 1rem;
+}
+.comment__like {
+  border: none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  background-color: #323232;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.5rem;
+  width: 5rem;
+  transition: transform 0.3s;
+}
+.comment__like:hover {
+  background: #000000;
+  transform: scale(1.2);
+}
+.comment__delete {
+  border: none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  background-color: #323232;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.5rem;
+  width: 5rem;
+  transition: transform 0.3s;
+}
+.comment__delete:hover {
+  background: #000000;
+  transform: scale(1.2);
 }/*# sourceMappingURL=bio.css.map */

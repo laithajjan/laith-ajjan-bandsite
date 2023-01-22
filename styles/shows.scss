@@ -2,9 +2,266 @@
 @use './partials/mixins';
 @use './partials/screens';
 @use './partials/borders';
-@use './partials/global';
+@use './partials/fonts';
 @use './partials/variables';
 
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf),
+        url("../../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf),
+        url("../../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Avenir Next";
+    src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf),
+        url("../../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+*,
+* ::before,
+* ::after {
+    box-sizing: border-box;
+}
+
+
+// Styling the body
+.body {
+    font-family: "Avenir Next";
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+// Styling the header section
+.header {
+    background-color: colours.$bandsite-black;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+
+    @include mixins.tablet {
+        padding: 0 2.25rem;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    @include mixins.desktop {
+        padding: 0 8rem;
+    }
+
+    &__text {
+        margin: 0;
+    }
+
+    &__button {
+        width: 7.5rem;
+        height: 1.25rem;
+        display: flex;
+        margin: 1rem auto;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin: 1.5rem 4rem 1.5rem 0;
+        }
+
+        @include mixins.desktop {
+            margin-top: 2rem;
+        }
+
+        &:hover {
+            transform: variables.$scale;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        @include mixins.tablet {
+            height: 100%;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: colours.$mercury;
+
+        &--active {
+            color: colours.$white;
+        }
+
+        &:hover {
+            color: colours.$white;
+        }
+    }
+
+    &__item {
+        list-style-type: none;
+        text-align: center;
+        width: 50%;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+        position: relative;
+
+
+        @include mixins.tablet {
+            padding-top: 1.75rem;
+            margin-right: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @include mixins.desktop {
+            padding-top: 2.25rem;
+            padding-bottom: 2rem;
+            margin-right: 2rem;
+        }
+
+        &--active {
+            font-weight: 500;
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 1rem;
+        }
+
+        &--inactive a {
+            color: colours.$mercury;
+        }
+
+        &:hover,
+        &:active {
+            border-bottom: 3px solid colours.$white;
+            padding-bottom: 2rem;
+            text-decoration: none;
+        }
+    }
+}
+
+// Styling the footer section
+.footer {
+    padding: 1.5rem 1rem 1rem 1rem;
+    background-color: colours.$bandsite-black;
+    color: colours.$white;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+
+    @include mixins.tablet {
+        font-size: 0.9rem;
+        margin-top: 1.125rem;
+        padding: 1.5rem 2.25rem 2.25rem 2.25rem;
+        position: relative;
+    }
+
+    @include mixins.desktop {
+        padding: 1.5rem 8rem 2.25rem 8rem;
+    }
+
+    &__container {
+        @include mixins.tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__header {
+        @include mixins.mobile-heading;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @include mixins.tablet {
+            @include mixins.tablet-heading;
+            margin-top: 1.5rem;
+            margin-right: 2.5rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    &__icons {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1.2rem;
+        transition: transform 0.3s;
+
+        @include mixins.tablet {
+            margin-bottom: -0.5rem;
+            margin-right: 1.8rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__body {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @include mixins.desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__section {
+        margin-bottom: 2rem;
+
+        @include mixins.desktop {
+            margin-right: 4rem;
+        }
+    }
+
+    &__section-header {
+        font-weight: 600;
+    }
+
+    &__mail-link {
+        text-decoration: none;
+        color: colours.$white;
+    }
+
+    &__logo {
+        @include mixins.logo;
+        margin: 4rem 0 1rem 0;
+
+        @include mixins.tablet {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            position: absolute;
+            top: 3rem;
+            right: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            right: 8rem;
+        }
+    }
+
+    &__copyright {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+        }
+    }
+}
 
 // Styling the hero section
 .hero {
