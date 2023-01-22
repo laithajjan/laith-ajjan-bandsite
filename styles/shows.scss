@@ -2,7 +2,6 @@
 @use './partials/mixins';
 @use './partials/screens';
 @use './partials/borders';
-@use './partials/fonts';
 @use './partials/variables';
 
 @font-face {
@@ -25,7 +24,6 @@
         url("../../assets/fonts/AvenirNextLTProBold.ttf") format("truetype");
     font-weight: 700;
 }
-
 *,
 * ::before,
 * ::after {
