@@ -39,21 +39,25 @@ showSection.appendChild(showsArticle);
 const tableHead = document.createElement('ul');
 tableHead.classList.add('shows__detail', 'shows__detail--top');
 
+// Appending dates to table
 const tableHeadDate = document.createElement('li');
 tableHeadDate.classList.add('shows__detail-header', 'shows__detail-header--date');
 tableHeadDate.innerText = 'Date';
 tableHead.appendChild(tableHeadDate);
 
+// Appending venue to table
 const tableHeadVenue = document.createElement('li');
 tableHeadVenue.classList.add('shows__detail-header');
 tableHeadVenue.innerText = 'Venue';
 tableHead.appendChild(tableHeadVenue);
 
+// Appending location to table
 const tableHeadLocation = document.createElement('li');
 tableHeadLocation.classList.add('shows__detail-header');
 tableHeadLocation.innerText = 'Location';
 tableHead.appendChild(tableHeadLocation);
 
+// Appending headerMargin to table
 const headerMargin = document.createElement('div');
 headerMargin.classList.add('shows__header-margin');
 tableHead.appendChild(headerMargin);

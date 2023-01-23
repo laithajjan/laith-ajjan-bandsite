@@ -1,3 +1,4 @@
+//  Importing style sheets
 @use './partials/colours';
 @use './partials/mixins';
 @use './partials/screens';
@@ -10,6 +11,7 @@
     box-sizing: border-box;
 }
 
+// Importing all font-faces used
 @font-face {
     font-family: "Avenir Next";
     src: url(../assets/fonts/AvenirNextLTPro-Regular.otf),

@@ -220,5 +220,6 @@ const addComment = ((event) => {
     }
 });
 
+// Adding event listening for adding comments
 const form = document.querySelector('.comment__form');
 form.addEventListener('submit', addComment);
