@@ -1,8 +1,9 @@
+// Setting the apiKey as well as the get and post URLs
 const apiKey = '671ed9e7-8197-4a31-af1f-8d003b10d58e';
 const showsURL = `https://project-1-api.herokuapp.com/showdates/?api_key=${apiKey}`;
 
 
-//declare function to format date
+//Function to format date
 function formatDate(date) {
     correctDate = new Date(Number(date));
     
@@ -18,23 +19,23 @@ function formatDate(date) {
 }
 
 
-//get the parent to which the shows would be appended
+//Getting parent to which shows are appended
 const showSection = document.querySelector('.shows');
 let shows = [];
 
 
-//shows section heading 
+//Creating shows heading
 const showsHeading = document.createElement('h2');
 showsHeading.classList.add('shows__heading');
 showsHeading.innerText = 'Shows';
 showSection.appendChild(showsHeading);
 
-//shows section article 
+//Creating shows article
 const showsArticle = document.createElement('article');
 showsArticle.classList.add('shows__body');
 showSection.appendChild(showsArticle);
 
-//table head
+//Creating table
 const tableHead = document.createElement('ul');
 tableHead.classList.add('shows__detail', 'shows__detail--top');
 
@@ -57,15 +58,15 @@ const headerMargin = document.createElement('div');
 headerMargin.classList.add('shows__header-margin');
 tableHead.appendChild(headerMargin);
 
-//append table head to article section
+//Appending table to shows article
 showsArticle.appendChild(tableHead);
 
 
-// create a function to display all shows
+//Function to display shows
 function displayShows() {
     shows.forEach((show) => {
 
-        //table body
+        //Creating table body
         const tableBody = document.createElement('ul');
         tableBody.classList.add('shows__container');
 
@@ -81,7 +82,7 @@ function displayShows() {
 
         tableBody.addEventListener('click', focusShow);
 
-        //table list for date
+        //Creating list for data
         const tableListDate = document.createElement('li');
         tableBody.appendChild(tableListDate);
 
@@ -95,7 +96,7 @@ function displayShows() {
         showDateInfo.innerText = formatDate(show.date);
         tableListDate.appendChild(showDateInfo);
 
-        //table list for venue
+        //Creating list for venues
         const tableListVenue = document.createElement('li');
         tableBody.appendChild(tableListVenue);
 
@@ -109,7 +110,7 @@ function displayShows() {
         showVenueInfo.innerText = show.place;
         tableListVenue.appendChild(showVenueInfo);
 
-        //table list for location
+        //Creating list for locations
         const tableListLocation = document.createElement('li');
         tableBody.appendChild(tableListLocation);
 
@@ -123,7 +124,7 @@ function displayShows() {
         showLocationInfo.innerText = show.location;
         tableListLocation.appendChild(showLocationInfo);
 
-        //table list for button
+        //Creating list for buttons
         const tableListButton = document.createElement('li');
         tableBody.appendChild(tableListButton);
 
@@ -134,13 +135,13 @@ function displayShows() {
         button.innerText = 'Buy Tickets';
         tableListButton.appendChild(button);
 
-        //append comment to article section
+        //Appending comments to shows article
         showsArticle.appendChild(tableBody);
     });
 }
 
 
-//make axios request for shows
+//Creating axios requests
 axios 
     .get(showsURL)
     .then((response) => {

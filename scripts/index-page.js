@@ -1,9 +1,10 @@
+// Setting the apiKey as well as the get and post URLs
 const apiKey = '671ed9e7-8197-4a31-af1f-8d003b10d58e';
 const getURL = `https://project-1-api.herokuapp.com/comments/?api_key=${apiKey}`;
 const postURL = `https://project-1-api.herokuapp.com/comments/?api_key=${apiKey}`;
 
 
-//declare function to format name to desired case
+//Function to format name
 function formatName(string) {
     const names = string.split(' ');
     const newNames = names.map((name) => {
@@ -14,7 +15,7 @@ function formatName(string) {
 }
 
 
-//declare function to format date to dynamic date
+//Function for dynamic date
 const intervals = [
     { label: 'year', seconds: 31536000 },
     { label: 'month', seconds: 2592000 },
@@ -35,12 +36,12 @@ function formatDate(date) {
 }
 
 
-//get the parent to which the comments would be appended
+//Getting parent for appending comments
 const commentSection = document.querySelector('.comment__section');
 let comments = [];
 
 
-// create a function to display all comments
+// Function to Display comments
 function displayComments() {
 
     commentSection.innerHTML = '';
@@ -49,7 +50,6 @@ function displayComments() {
         const userComment = document.createElement('div');
         userComment.classList.add('comment__old');
 
-        //image element
         if (!comment.image) {
             const imageDiv = document.createElement('div');
             imageDiv.classList.add('comment__avatar-missing');
@@ -61,39 +61,39 @@ function displayComments() {
             userComment.appendChild(userAvatar);
         }
 
-        //comment container
+        //Creating a comment container
         const commentContainer = document.createElement('div');
         commentContainer.classList.add('comment__old-container');
         userComment.appendChild(commentContainer);
 
-        //user info
+        //Appending user information to comment container
         const userInfo = document.createElement('div');
         userInfo.classList.add('comment__info');
         commentContainer.appendChild(userInfo);
 
-        //user name
+        //Appending username to useinfo
         const userName = document.createElement('div');
         userName.classList.add('comment__writer');
         userName.innerText = comment.name;
         userInfo.appendChild(userName);
 
-        //date
+        //Appendig date to useinfo
         const date = document.createElement('div');
         date.classList.add('comment__date');
         date.innerText = formatDate(comment.timestamp);
         userInfo.appendChild(date);
 
-        //comment text
+        //Appending text to comment container
         const text = document.createElement('p');
         text.innerText = comment.comment;
         commentContainer.appendChild(text);
 
-        //comment buttons
+        //Appending comment buttons to comment container
         const commentButtons = document.createElement('div');
         commentButtons.classList.add('comment__buttons');
         commentContainer.appendChild(commentButtons); 
 
-        //like button
+        //Appending like button to commentbuttons 
         const likeButton = document.createElement('button');
         likeButton.classList.add('comment__like');
         if (comment.likes === 1) {
@@ -127,7 +127,7 @@ function displayComments() {
         
         likeButton.addEventListener('click', likeComment);
 
-        //delete button
+        //Creating delete button
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('comment__delete');
         deleteButton.innerText = 'Delete';
@@ -151,13 +151,13 @@ function displayComments() {
 
         deleteButton.addEventListener('click', deleteComment);
 
-        //append comment to webpage
+        //Appending user comments to comment section
         commentSection.appendChild(userComment);
     });  
 }
 
 
-//make axios request for comments
+//Creating axios 
 axios
     .get(getURL)
     .then((response) => {
@@ -169,7 +169,7 @@ axios
     });
 
 
-//create function to post new comment
+//Function to add comments
 const addComment = ((event) => {
 
     event.preventDefault(); 
@@ -220,7 +220,5 @@ const addComment = ((event) => {
     }
 });
 
-
-//add new comment to page
 const form = document.querySelector('.comment__form');
 form.addEventListener('submit', addComment);
